@@ -1,0 +1,45 @@
+.freezeBackGround {
+	-fx-background-color: radial-gradient(radius 360%, rgb(0, 1 ,19), rgb(3, 85, 129));
+}
+
+.headerCash {
+	-fx-background-color: rgb(161, 244, 255);
+	-fx-effect: dropshadow(three-pass-box, rgb(113, 201, 251), 0, 0, 0, 20);
+}
+
+.footerCash {
+	-fx-background-color: rgb(113, 201, 251);
+}
+
+.normalFreezeButton {
+	-fx-min-width: 320px;
+	-fx-background-radius: 30px;
+	-fx-background-color: rgb(161, 244, 255);
+	-fx-effect: dropshadow(three-pass-box, rgb(113, 201, 251), 0, 0, 0, 20);
+}
+
+.normalFreezeButton:pressed {
+	-fx-background-color: rgb(161, 244, 255);
+	-fx-effect: dropshadow(three-pass-box, rgb(113, 201, 251), 0, 0, 0, 0);
+}
+
+.normalFreezeText {
+	-fx-padding: 10px;
+	-fx-font-size: 40px;
+	-fx-text-fill: #fff;
+	-fx-font-family: "Arial Black";
+	-fx-effect: dropshadow(three-pass-box, rgb(113, 201, 251), 0, 0, 5, 10);
+}
+
+.navFreezeButton {
+	-fx-min-width: 220px;
+	-fx-background-color: rgb(0, 0, 0, 0);
+}
+
+.navFreezeText {
+	-fx-padding: 10px;
+	-fx-font-size: 40px;
+	-fx-text-fill: #fff;
+	-fx-font-family: "Arial Black";
+	-fx-effect: dropshadow(three-pass-box, rgb(113, 201, 251), 0, 0, 5, 10);
+}
