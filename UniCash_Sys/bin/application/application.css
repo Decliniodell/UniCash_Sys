@@ -43,3 +43,23 @@
 	-fx-font-family: "Arial Black";
 	-fx-effect: dropshadow(three-pass-box, rgb(113, 201, 251), 0, 0, 5, 10);
 }
+
+.textLabelTitle {
+	-fx-padding: 10px;
+	-fx-font-size: 40px;
+	-fx-text-fill: #fff;
+	-fx-font-family: "Arial Black";
+}
+
+.textLabelSubTitle {
+	-fx-padding: 10px;
+	-fx-font-size: 20px;
+	-fx-text-fill: #fff;
+	-fx-font-family: "Arial Black";
+}
+
+.inputField {
+	-fx-background-radius: 20px;
+	-fx-font-size: 30px;
+	-fx-pref-height: 60px;
+}

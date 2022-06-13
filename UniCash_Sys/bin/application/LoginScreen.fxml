@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" styleClass="freezeBackGround" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginScreenController">
    <children>
@@ -35,17 +36,26 @@
                   <Insets left="200.0" right="200.0" />
                </GridPane.margin>
                <children>
-                  <TextField fx:id="textAccount" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" StackPane.alignment="TOP_CENTER">
+                     <children>
+                        <Label styleClass="textLabelTitle" text="Nº de conta" />
+                        <TextField fx:id="textAccount" styleClass="inputField" />
+                     </children>
+                  </VBox>
                </children>
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <PasswordField fx:id="textPassword">
-                     <StackPane.margin>
-                        <Insets left="200.0" right="200.0" />
-                     </StackPane.margin>
-                  </PasswordField>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label styleClass="textLabelTitle" text="Senha" />
+                        <PasswordField fx:id="textPassword" styleClass="inputField" />
+                     </children>
+                  </VBox>
                </children>
+               <GridPane.margin>
+                  <Insets left="200.0" right="200.0" />
+               </GridPane.margin>
             </StackPane>
          </children>
       </GridPane>
@@ -53,7 +63,7 @@
          <children>
             <StackPane prefHeight="100.0" prefWidth="640.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#makeLogin" styleClass="navFreezeButton" textAlignment="CENTER" textOverrun="CLIP">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#verifyFields" styleClass="navFreezeButton" textAlignment="CENTER" textOverrun="CLIP">
                      <graphic>
                         <Label alignment="CENTER" styleClass="navFreezeText" text="LOGAR" textAlignment="CENTER" />
                      </graphic>
@@ -63,11 +73,6 @@
                   </Button>
                </children>
             </StackPane>
-         </children>
-      </HBox>
-      <HBox alignment="BOTTOM_RIGHT" layoutX="465.0" layoutY="366.0" prefHeight="82.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label fx:id="textLoading" alignment="BOTTOM_RIGHT" styleClass="navFreezeText" text="Loading...." textAlignment="RIGHT" visible="false" />
          </children>
       </HBox>
    </children>

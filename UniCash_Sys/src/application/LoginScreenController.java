@@ -20,72 +20,52 @@ import java.sql.Statement;
 
 public class LoginScreenController {
 	
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
-	
 	@FXML
 	private TextField textAccount;
 
 	@FXML
 	private TextField textPassword;
-
-	@FXML
-	private Label textLoading;
-	
-	public void stageCreate(ActionEvent event) {
-		scene = new Scene(root, 800, 600);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-//	public void switchToRegiterScreen(ActionEvent value) throws IOException {
-//		root = FXMLLoader.load(getClass().getResource("RegisterScreen.fxml"));
-//		stageCreate(value);
-//	}
 	
 	public void switchToHomeScreen(ActionEvent value) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
-		stageCreate(value);
+		Main.root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+		Main.swapScenes(Main.root);
 	}
 	
-	public void makeLogin(ActionEvent event) {
-		textLoading.setVisible(true);
-		
-//		Thread newThread = new Thread(() -> {
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-			} catch(ClassNotFoundException e) {
-				e.printStackTrace();
-			};
-			
-			try {
+	public void switchToRegiterScreen(ActionEvent value) throws IOException {
+		Main.root = FXMLLoader.load(getClass().getResource("RegisterScreen.fxml"));
+		Main.swapScenes(Main.root);
+	}
 	
-				String currentQuery = String.format(
-						"select * from users where id_account = %s and password = md5(%s)",
-						textAccount.getText(),
-						textPassword.getText()
-				);
+	public void verifyFields(ActionEvent event) throws IOException, InterruptedException, SQLException {
+		String accountId = textAccount.getText();
+		String password = textPassword.getText();
+		
+		if (accountId != "" && password != "") {
+			makeLogin(event, accountId, password);
 			
-				Connection conection = DriverManager.getConnection(System.getenv("URL_SQL"), System.getenv("UNAME"), System.getenv("PASSWORD"));
-				Statement statement = conection.createStatement();
-				ResultSet result = statement.executeQuery(currentQuery);
-					
-				if (result.next()) {
-					System.out.println("aprovado");
-					switchToHomeScreen(event);
-				} else {
-					System.out.println("noop");
-				};
+		} else {
 			
-			} catch(SQLException e) {
-				e.printStackTrace();
-			} catch(IOException e) {
-				e.printStackTrace();
-			};
-//		});
-//		newThread.start();
+		}
+	}
+	
+	public void makeLogin(ActionEvent event, String accountId, String password) throws IOException, SQLException {
+		String currentQuery = String.format(
+				"select * from users where id_account = %s and password = md5(%s)",
+				accountId,
+				password
+		);
+
+		ResultSet result = Main.executeQuerys(currentQuery);
+		
+		if (result != null ) {
+			User.cpf = result.getString("cpf");
+			User.name = result.getString("name");
+			User.balance = result.getFloat("balance");
+			User.accountId = accountId;
+			User.password = password;
+			switchToHomeScreen(event);
+		} else {
+			System.out.println("noop");
+		}
 	}
 }
